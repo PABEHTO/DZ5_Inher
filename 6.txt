@@ -1,0 +1,65 @@
+#include <iostream>
+
+using namespace std;
+
+class Human{
+private:
+    string name;
+    unsigned int age;
+public:
+    Human(string n, unsigned int ag){
+        name = n;
+        age = ag;
+    }
+    string getName(){
+        return name;
+    }
+    unsigned int getAge(){
+        return age;
+    }
+    void setName(string NAME){
+        name = NAME;
+    }
+    void setAge(unsigned int AGE){
+        age = AGE;
+    }
+    void print(){
+        cout<<name<<", "<<age<<endl;
+    }
+    void copyy(const Human &hum){
+        this->name = hum.name;
+        this->age = hum.age;
+    }
+};
+
+class Student: public Human{
+private:
+    string course;
+public:
+    Student(string name, unsigned int age, string cour): Human(name,age){
+        this->course = cour;
+    }
+    void skip_class(){
+        cout<<"para v webinare"<<endl;
+    }
+    string getCourse(){
+        return course;
+    }
+
+};
+
+int main()
+{
+   Human a1("Aston", 23);
+    Human a2("Martin", 24);
+
+    Student b1("Clay", 19, "proga");
+
+    Student b2(b1);
+    b1.setName("Stive"); b1.setAge(20); b1.skip_class();
+    b1.print();
+    a1.setName("Sony"); a1.setAge(30);
+    a1.print();
+
+    return 0;
+}

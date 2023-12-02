@@ -1,0 +1,243 @@
+#include <iostream>
+
+using namespace std;
+
+class Human{
+private:
+    string name;
+    unsigned int age;
+public:
+    Human(string n, unsigned int ag){
+        name = n;
+        age = ag;
+    }
+    string getName(){
+        return name;
+    }
+    unsigned int getAge(){
+        return age;
+    }
+    void setName(string NAME){
+        name = NAME;
+    }
+    void setAge(unsigned int AGE){
+        age = AGE;
+    }
+    void print(){
+        cout<<name<<", "<<age<<endl;
+    }
+    Human(const Human &hum){
+        name = hum.name;
+        age = hum.age;
+    }
+};
+
+class Student: public Human{
+private:
+    string course;
+public:
+    Student(string name, unsigned int age, string cour): Human(name,age){
+        this->course = cour;
+    }
+    void skip_class(){
+        cout<<"para v webinare"<<endl;
+    }
+    string getCourse(){
+        return course;
+    }
+    Student(const Student & stu): Human(stu){
+        course = stu.course;
+    }
+};
+//______________________________________________________________________________________________
+class matreshka1
+{
+private:
+  int num;
+public:
+    matreshka1 (int num = 1)
+  {
+    this->num = num;
+  }
+  void setNum (int num)
+  {
+    this->num = num;
+  }
+  void printNum ()
+  {
+    cout << num << endl;
+  }
+};
+
+class matreshka2:public matreshka1
+{
+public:
+  void say ()
+  {
+    cout << "Here we are" << endl;
+  }
+matreshka2 (int num = 2):matreshka1 (num)
+  {
+  }
+};
+
+class matreshka3:public matreshka2
+{
+public:
+matreshka3 (int num = 3):matreshka2 (num)
+  {
+  }
+};
+
+class matreshka4:public matreshka3
+{
+private:
+  string words;
+
+public:
+matreshka4 (int num = 4, string w = "No last!"):matreshka3 (num)
+  {
+    this->words = w;
+  }
+  void setWords (string ww)
+  {
+    this->words = ww;
+  }
+  void tell ()
+  {
+    cout << words << endl;
+  }
+};
+
+class matreshka5:public matreshka4
+{
+public:
+matreshka5 (int num = 5, string WWW = "last!"):matreshka4 (num, WWW)
+  {
+  }
+};
+
+//_______________________________________________________________________________________________
+class camera
+{
+private:
+  int megapix;
+  int zoom;
+public:
+    camera (int x = 16, int y = 4)
+  {
+    megapix = x;
+    zoom = y;
+  }
+  void setMegapix (int x)
+  {
+    megapix = x;
+  }
+  void setZoom (int x)
+  {
+    zoom = x;
+  }
+  void getInfo1 ()
+  {
+    cout << "camera: " << megapix << " megapixels, " << zoom << "x" << " zoom"
+      << endl;
+  }
+};
+
+class proc
+{
+private:
+  double Ghz;
+public:
+    proc (double x = 3.0)
+  {
+    Ghz = x;
+  }
+  void setGhz (double x)
+  {
+    Ghz = x;
+  }
+  void getInfo2 ()
+  {
+    cout << "processor: " << Ghz << "Ghz" << endl;
+  }
+};
+
+class Display
+{
+private:
+  string size;
+public:
+  Display (string x = "1280 x 720")
+  {
+    size = x;
+  }
+  void setSize (string x)
+  {
+    size = x;
+  }
+  void getInfo3 ()
+  {
+    cout << "display: " << size << endl;
+  }
+};
+
+class RAM
+{
+private:
+  int ram;
+public:
+    RAM (int x = 4)
+  {
+    ram = x;
+  }
+  void setRam (int x)
+  {
+    ram = x;
+  }
+  void getInfo4 ()
+  {
+    cout << "RAM: " << ram << "Gb" << endl;
+  }
+};
+
+class smartphone:public camera, public proc, public Display, public RAM
+{
+public:
+  void getINFO ()
+  {
+    getInfo1 ();
+    getInfo2 ();
+    getInfo3 ();
+    getInfo4 ();
+  }
+};
+
+int main()
+{
+    Human a1("Aston", 23);
+    Human a2("Martin", 24);
+
+    Student b1("Clay", 19, "proga");
+
+    Student b2(b1);
+    b1.setName("Stive"); b1.setAge(20); b1.skip_class();
+    b1.print();
+    a1.setName("Sony"); a1.setAge(30);
+    a1.print();
+
+    //классы матрёшка1-5 крч сделал
+    matreshka5 m1;
+    m1.tell(); m1.setNum(55); m1.printNum();
+
+    //крафт ипхона
+    smartphone ip;
+    ip.setGhz (4.4);
+    ip.setRam (8);
+    ip.setSize ("1980 x 1280");
+    ip.getINFO ();
+
+
+
+    return 0;
+}

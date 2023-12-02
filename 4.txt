@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+class Human{
+private:
+    string name;
+    unsigned int age;
+public:
+    Human(string n, unsigned int ag){
+        name = n;
+        age = ag;
+    }
+    string getName(){
+        return name;
+    }
+    unsigned int getAge(){
+        return age;
+    }
+    void setName(string NAME){
+        name = NAME;
+    }
+    void setAge(unsigned int AGE){
+        age = AGE;
+    }
+    void print(){
+        cout<<name<<", "<<age<<endl;
+    }
+    Human(const Human &hum){
+        name = hum.name;
+        age = hum.age;
+    }
+};
+
+int main()
+{
+    Human a1("Aston", 23);
+    Human a2("Martin", 24);
+    return 0;
+}

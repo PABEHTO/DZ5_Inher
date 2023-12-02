@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+class Human{
+private:
+    string name;
+    unsigned int age;
+public:
+    Human(string n, unsigned int ag){
+        name = n;
+        age = ag;
+    }
+};
+
+int main()
+{
+    Human a1("Aston", 23);
+    Human a2("Martin", 24);
+    return 0;
+}

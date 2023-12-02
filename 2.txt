@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+class Human{
+private:
+public:
+};
+
+int main()
+{
+    Human a1;
+    Human a2;
+    return 0;
+}
